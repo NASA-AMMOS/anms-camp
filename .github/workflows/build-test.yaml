@@ -18,7 +18,9 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
       - name: Install
-        run: pip3 install -e '.[test]'
+        run: |
+          pip3 install git+https://github.com/NASA-AMMOS/anms-ace.git
+          pip3 install -e '.[test]'
       - name: Test
         run: python3 -m pytest -v --cov=camp tests
 

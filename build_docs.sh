@@ -26,7 +26,6 @@ set -e
 
 SELFDIR=$(realpath $(dirname "${BASH_SOURCE[0]}"))
 
-export PYTHONPATH=${SELFDIR}/src
 cd "${SELFDIR}"
 sphinx-apidoc -o docs/_api/ src/camp/ --force --module-first --no-headings --doc-project "CAmpPython API"
 sphinx-build docs docs/_build/html -d docs/_build/doctrees
