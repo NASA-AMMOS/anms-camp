@@ -39,7 +39,9 @@ class Writer(AbstractWriter, CHelperMixin):
     def __init__(self, admset, adm, out_path, scrape: bool):
         super().__init__(admset, adm, out_path)
 
-        self._scraper = H_Scraper(self.file_path() if scrape else None)
+        full_path = self.file_path()
+        scrape_src = full_path if scrape and os.path.exists(full_path) else None
+        self._scraper = H_Scraper(scrape_src)
 
     def file_path(self) -> str:
         # Interface for AbstractWriter

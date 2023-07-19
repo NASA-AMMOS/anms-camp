@@ -108,8 +108,7 @@ class TestCamp(unittest.TestCase):
         args.only_sql = False
         args.only_ch = True
         args.nickname = 9999
-        args.scrapeH = None
-        args.scrapeC = None
+        args.scrape = False
         try:
             exitcode = camp.tools.camp.run(args)
             self.assertEqual(0, exitcode)

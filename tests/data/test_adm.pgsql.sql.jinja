@@ -162,6 +162,7 @@ CALL SP__insert_operator_actual_definition(test_ns_op_plusreal64, 'Real64 additi
 -- create ac for expression
 CALL SP__insert_obj_metadata(12, 'var_with_init', test_ns_namespace_id, test_ns_var_var_with_init);
 CALL SP__insert_ac_id(1, 'ac for the expression used by test_ns_var_var_with_init', var_ac_id);
+
 CALL SP__insert_ac_actual_entry(var_ac_id, test_ns_edd_edd_uint_aid, 1, r_ac_entry_id_1 );
 CALL SP__insert_variable_definition(test_ns_var_var_with_init, 'This is the number of rules known to the Agent (#TBR + #SBR).', 20, var_ac_id, test_ns_var_var_with_init_aid);
 
