@@ -1,0 +1,191 @@
+{
+    "Mdat": [
+        {
+            "name": "name",
+            "type": "STR",
+            "value": "test_adm",
+            "description": "The human-readable name of the ADM."
+        },
+        {
+            "name": "namespace",
+            "type": "STR",
+            "value": "test_ns",
+            "description": "The namespace of the ADM."
+        },
+        {
+            "name": "version",
+            "type": "STR",
+            "value": "v0",
+            "description": "The version of the ADM."
+        },
+        {
+            "name": "organization",
+            "type": "STR",
+            "value": "JHUAPL",
+            "description": "The name of the issuing organization of the ADM."
+        },
+        {
+            "name": "enum",
+            "type": "UINT",
+            "value": "9999"
+        }
+    ],
+    "Edd": [
+        {
+            "name": "edd_uint",
+            "type": "UINT",
+            "description": "This is the number of report templates known to the Agent."
+        },
+        {
+            "name": "uint_with_param",
+            "type": "UINT",
+            "description": "This is the number of report templates known to the Agent.",
+            "parmspec": [
+                {
+                    "type": "UINT",
+                    "name": "other"
+                }
+            ]
+        },
+        {
+            "name": "edd_tv",
+            "type": "TV",
+            "description": "This is the current system time."
+        },
+        {
+            "name": "endpoint_active",
+            "type": "UINT",
+            "parmspec": [{
+                "type": "STR",
+                "name": "endpoint_name"
+            }],
+            "description": "is the given endpoint active? (0=no)"
+        }
+    ],
+    "Var": [
+        {
+            "name": "var_with_init",
+            "type": "UINT",
+            "initializer": {
+                "type": "UINT",
+                "postfix-expr": [
+                    {
+                        "ns": "test_ns",
+                        "nm": "Edd.edd_uint"
+                    }
+                ]
+            },
+            "description": "This is the number of rules known to the Agent (#TBR + #SBR)."
+        }
+    ],
+    "Tblt": [
+        {
+            "name": "variables",
+            "columns": [
+                {
+                    "type": "ARI",
+                    "name": "ids"
+                }
+            ],
+            "description": "This table lists the ARI for every variable that is known to the agent."
+        },
+        {
+            "name": "rptts",
+            "columns": [
+                {
+                    "type": "ARI",
+                    "name": "ids"
+                }
+            ],
+            "description": "This table lists the ARI for every report template that is known to the agent."
+        }
+    ],
+    "Rptt": [
+        {
+            "name": "full_report",
+            "description": "This is all known meta-data, EDD, and VAR values known by the agent.",
+            "definition": [
+                {
+                    "ns": "test_ns",
+                    "nm": "mdat.name"
+                },
+                {
+                    "ns": "test_ns",
+                    "nm": "var.var_with_init"
+                },
+                {
+                    "ns": "test_ns",
+                    "nm": "edd.uint_with_param(3)"
+                }
+            ]
+        },
+        {
+            "name": "endpoint_report",
+            "parmspec": [{
+                "type": "STR",
+                "name": "endpoint_id"
+            }],
+            "definition": [
+                {
+                    "ns": "test_ns",
+                    "nm": "edd.endpoint_active",
+                    "ap": [
+                        {
+                            "type": "ParmName",
+                            "value": "endpoint_id"
+                        }
+                    ]
+                }
+            ],
+            "description": "This is all known endpoint information"
+        }
+    ],
+    "Ctrl": [
+        {
+            "name": "add_var",
+            "parmspec": [
+                {
+                    "type": "ARI",
+                    "name": "id"
+                },
+                {
+                    "type": "EXPR",
+                    "name": "def"
+                },
+                {
+                    "type": "BYTE",
+                    "name": "type"
+                }
+            ],
+            "description": "This control configures a new variable definition on the Agent."
+        }
+    ],
+    "Const": [
+        {
+            "name": "amp_epoch",
+            "type": "TS",
+            "value": "1504915200",
+            "description": "This constant is the time epoch for the Agent."
+        }
+    ],
+    "Oper": [
+        {
+            "name": "plusINT",
+            "result-type": "INT",
+            "in-type": [
+                "INT",
+                "INT"
+            ],
+            "description": "Int32 addition"
+        },
+        {
+            "name": "plusREAL64",
+            "result-type": "REAL64",
+            "in-type": [
+                "REAL64",
+                "REAL64"
+            ],
+            "description": "Real64 addition"
+        }
+    ]
+}

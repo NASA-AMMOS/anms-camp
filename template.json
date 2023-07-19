@@ -1,0 +1,195 @@
+{
+  "uses": [],
+
+  "Mdat": [{
+      "name": "name",
+      "type": "STR",
+      "value": "",
+      "description": "The human-readable name of the ADM."
+    },
+    {
+      "name": "namespace",
+      "type": "STR",
+      "value": "",
+      "description": "The namespace of the ADM."
+    },
+    {
+      "name": "version",
+      "type": "STR",
+      "value": "",
+      "description": "The version of the ADM."
+    },
+    {
+      "name": "organization",
+      "type": "STR",
+      "value": "",
+      "description": "The name of the issuing organization of the ADM."
+    }
+  ],
+
+  "Edd": [{
+      "name": "",
+      "type": "",
+      "description": ""
+
+    },
+    {
+      "name": "",
+      "type": "",
+      "parmspec": [{
+        "type": "",
+        "name": ""
+      }],
+      "description": ""
+
+    },
+    {
+      "name": "",
+      "type": "",
+      "parmspec": [{
+        "type": "",
+        "name": ""
+      }, {
+        "type": "",
+        "name": ""
+      }],
+      "description": ""
+
+    }
+  ],
+
+  "Ctrl": [{
+      "name": "",
+      "description": ""
+    },
+    {
+      "name": "",
+      "parmspec": [{
+        "type": "",
+        "name": ""
+      }],
+      "description": ""
+    }
+  ],
+
+  "Const": [{
+    "name": "",
+    "type": "",
+    "value": "",
+    "description": ""
+  }],
+
+  "Mac": [{
+    "name": "user_list",
+    "definition": [{
+        "ns": "",
+        "nm": "",
+        "ap": []
+      },
+      {
+        "ns": "",
+        "nm": "",
+        "ap": []
+      }
+    ],
+
+    "description": "This macro lists all of the user defined data."
+  }],
+
+  "Oper": [{
+    "name": "",
+    "result-type": "",
+    "in-type": ["", ""],
+    "description": ""
+  }],
+
+  "Rptt": [{
+      "name": "full_report",
+      "parmspec": [{
+        "type": "",
+        "name": ""
+      }],
+      "definition": [{
+          "ns": "",
+          "nm": "",
+          "ap": [{
+            "type": "parameter",
+            "value": ""
+          }]
+        },
+        {
+          "ns": "",
+          "nm": "",
+          "ap": []
+        }
+      ],
+      "description": ""
+    },
+    {
+      "name": "",
+      "definition": [{
+          "ns": "",
+          "nm": "",
+          "ap": []
+        },
+        {
+          "ns": "",
+          "nm": "",
+          "ap": []
+        }
+      ],
+      "description": ""
+    }
+
+  ],
+
+  "Tblt": [{
+      "name": "",
+      "columns": [{
+        "type": "",
+        "name": ""
+      }],
+      "description": ""
+    },
+    {
+      "name": "",
+      "columns": [{
+        "type": "",
+        "name": ""
+      }, {
+        "type": "",
+        "name": ""
+      }],
+      "description": ""
+    }
+  ],
+
+  "Var": [{
+    "name": "",
+    "parmspec": [{
+      "type": "",
+      "name": ""
+    }],
+    "type": "",
+    "initializer": {
+      "type": "",
+      "postfix-expr": [{
+          "ns": "",
+          "nm": "",
+          "ap": []
+        },
+        {
+          "ns": "",
+          "nm": "",
+          "ap": []
+        },
+        {
+          "ns": "",
+          "nm": "",
+          "ap": []
+        }
+      ]
+    },
+    "description": ""
+  }]
+}

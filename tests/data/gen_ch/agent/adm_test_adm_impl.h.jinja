@@ -1,0 +1,79 @@
+/****************************************************************************
+ **
+ ** File Name: adm_test_adm_impl.h
+ **
+ ** Description: TODO
+ **
+ ** Notes: TODO
+ **
+ ** Assumptions: TODO
+ **
+ ** Modification History:
+ **  YYYY-MM-DD  AUTHOR           DESCRIPTION
+ **  ----------  --------------   --------------------------------------------
+ **  {{datestamp}}  AUTO             Auto-generated header file
+ **
+ ****************************************************************************/
+
+#ifndef ADM_TEST_ADM_IMPL_H_
+#define ADM_TEST_ADM_IMPL_H_
+
+/*   START CUSTOM INCLUDES HERE  */
+/*             TODO              */
+/*   STOP CUSTOM INCLUDES HERE  */
+
+
+#include "shared/utils/utils.h"
+#include "shared/primitives/ctrl.h"
+#include "shared/primitives/table.h"
+#include "shared/primitives/tnv.h"
+
+/*   START typeENUM */
+/*             TODO              */
+/*   STOP typeENUM  */
+
+
+/*
+ * +---------------------------------------------------------------------------------------------+
+ * |                                     Retrieval Functions                                     +
+ * +---------------------------------------------------------------------------------------------+
+ */
+/*   START CUSTOM FUNCTIONS HERE */
+/*             TODO              */
+/*   STOP CUSTOM FUNCTIONS HERE  */
+
+void test_ns_setup();
+void test_ns_cleanup();
+
+
+/* Metadata Functions */
+tnv_t *test_ns_meta_name(tnvc_t *parms);
+tnv_t *test_ns_meta_namespace(tnvc_t *parms);
+tnv_t *test_ns_meta_version(tnvc_t *parms);
+tnv_t *test_ns_meta_organization(tnvc_t *parms);
+tnv_t *test_ns_meta_enum(tnvc_t *parms);
+
+/* Constant Functions */
+tnv_t *test_ns_get_amp_epoch(tnvc_t *parms);
+
+/* Collect Functions */
+tnv_t *test_ns_get_edd_uint(tnvc_t *parms);
+tnv_t *test_ns_get_uint_with_param(tnvc_t *parms);
+tnv_t *test_ns_get_edd_tv(tnvc_t *parms);
+tnv_t *test_ns_get_endpoint_active(tnvc_t *parms);
+
+
+/* Control Functions */
+tnv_t *test_ns_ctrl_add_var(eid_t *def_mgr, tnvc_t *parms, int8_t *status);
+
+
+/* OP Functions */
+tnv_t *test_ns_op_plusint(vector_t *stack);
+tnv_t *test_ns_op_plusreal64(vector_t *stack);
+
+
+/* Table Build Functions */
+tbl_t *test_ns_tblt_variables(ari_t *id);
+tbl_t *test_ns_tblt_rptts(ari_t *id);
+
+#endif // ADM_TEST_ADM_IMPL_H_

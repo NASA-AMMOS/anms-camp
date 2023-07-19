@@ -1,0 +1,159 @@
+/****************************************************************************
+ **
+ ** File Name: adm_test_adm_agent.c
+ **
+ ** Description: TODO
+ **
+ ** Notes: TODO
+ **
+ ** Assumptions: TODO
+ **
+ ** Modification History:
+ **  YYYY-MM-DD  AUTHOR           DESCRIPTION
+ **  ----------  --------------   --------------------------------------------
+ **  {{datestamp}}  AUTO             Auto-generated c file
+ **
+ ****************************************************************************/
+
+
+#include "ion.h"
+#include "platform.h"
+#include "adm_test_adm.h"
+#include "shared/utils/utils.h"
+#include "shared/primitives/report.h"
+#include "shared/primitives/blob.h"
+#include "adm_test_adm_impl.h"
+#include "agent/rda.h"
+
+vec_idx_t g_test_ns_idx[11];
+
+static void test_ns_init_meta(void);
+static void test_ns_init_cnst(void);
+static void test_ns_init_edd(void);
+static void test_ns_init_op(void);
+static void test_ns_init_var(void);
+static void test_ns_init_ctrl(void);
+static void test_ns_init_mac(void);
+static void test_ns_init_rpttpl(void);
+static void test_ns_init_tblt(void);
+
+void test_ns_init()
+{
+	adm_add_adm_info("test_ns", ADM_ENUM_TEST_NS);
+
+	VDB_ADD_NN(((ADM_ENUM_TEST_NS * 20) + ADM_META_IDX), &(g_test_ns_idx[ADM_META_IDX]));
+	VDB_ADD_NN(((ADM_ENUM_TEST_NS * 20) + ADM_CONST_IDX), &(g_test_ns_idx[ADM_CONST_IDX]));
+	VDB_ADD_NN(((ADM_ENUM_TEST_NS * 20) + ADM_EDD_IDX), &(g_test_ns_idx[ADM_EDD_IDX]));
+	VDB_ADD_NN(((ADM_ENUM_TEST_NS * 20) + ADM_OPER_IDX), &(g_test_ns_idx[ADM_OPER_IDX]));
+	VDB_ADD_NN(((ADM_ENUM_TEST_NS * 20) + ADM_VAR_IDX), &(g_test_ns_idx[ADM_VAR_IDX]));
+	VDB_ADD_NN(((ADM_ENUM_TEST_NS * 20) + ADM_CTRL_IDX), &(g_test_ns_idx[ADM_CTRL_IDX]));
+	VDB_ADD_NN(((ADM_ENUM_TEST_NS * 20) + ADM_RPTT_IDX), &(g_test_ns_idx[ADM_RPTT_IDX]));
+	VDB_ADD_NN(((ADM_ENUM_TEST_NS * 20) + ADM_TBLT_IDX), &(g_test_ns_idx[ADM_TBLT_IDX]));
+
+
+	test_ns_setup();
+	test_ns_init_meta();
+	test_ns_init_cnst();
+	test_ns_init_edd();
+	test_ns_init_op();
+	test_ns_init_var();
+	test_ns_init_ctrl();
+	test_ns_init_mac();
+	test_ns_init_rpttpl();
+	test_ns_init_tblt();
+}
+
+void test_ns_init_meta()
+{
+
+	adm_add_cnst(adm_build_ari(AMP_TYPE_CNST, 0, g_test_ns_idx[ADM_META_IDX], TEST_NS_META_NAME), test_ns_meta_name);
+	adm_add_cnst(adm_build_ari(AMP_TYPE_CNST, 0, g_test_ns_idx[ADM_META_IDX], TEST_NS_META_NAMESPACE), test_ns_meta_namespace);
+	adm_add_cnst(adm_build_ari(AMP_TYPE_CNST, 0, g_test_ns_idx[ADM_META_IDX], TEST_NS_META_VERSION), test_ns_meta_version);
+	adm_add_cnst(adm_build_ari(AMP_TYPE_CNST, 0, g_test_ns_idx[ADM_META_IDX], TEST_NS_META_ORGANIZATION), test_ns_meta_organization);
+	adm_add_cnst(adm_build_ari(AMP_TYPE_CNST, 0, g_test_ns_idx[ADM_META_IDX], TEST_NS_META_ENUM), test_ns_meta_enum);
+}
+
+void test_ns_init_cnst()
+{
+
+	adm_add_cnst(adm_build_ari(AMP_TYPE_CNST, 0, g_test_ns_idx[ADM_CONST_IDX], TEST_NS_CNST_AMP_EPOCH), test_ns_get_amp_epoch);
+}
+
+void test_ns_init_edd()
+{
+
+	adm_add_edd(adm_build_ari(AMP_TYPE_EDD, 0, g_test_ns_idx[ADM_EDD_IDX], TEST_NS_EDD_EDD_UINT), test_ns_get_edd_uint);
+	adm_add_edd(adm_build_ari(AMP_TYPE_EDD, 1, g_test_ns_idx[ADM_EDD_IDX], TEST_NS_EDD_UINT_WITH_PARAM), test_ns_get_uint_with_param);
+	adm_add_edd(adm_build_ari(AMP_TYPE_EDD, 0, g_test_ns_idx[ADM_EDD_IDX], TEST_NS_EDD_EDD_TV), test_ns_get_edd_tv);
+	adm_add_edd(adm_build_ari(AMP_TYPE_EDD, 1, g_test_ns_idx[ADM_EDD_IDX], TEST_NS_EDD_ENDPOINT_ACTIVE), test_ns_get_endpoint_active);
+}
+
+void test_ns_init_op()
+{
+
+	adm_add_op(g_test_ns_idx[ADM_OPER_IDX], TEST_NS_OP_PLUSINT, 2, test_ns_op_plusint);
+	adm_add_op(g_test_ns_idx[ADM_OPER_IDX], TEST_NS_OP_PLUSREAL64, 2, test_ns_op_plusreal64);
+}
+
+void test_ns_init_var()
+{
+
+	ari_t *id = NULL;
+
+	expr_t *expr = NULL;
+
+
+	/* VAR_WITH_INIT */
+
+	id = adm_build_ari(AMP_TYPE_VAR, 0, g_test_ns_idx[ADM_VAR_IDX], TEST_NS_VAR_VAR_WITH_INIT);
+	expr = expr_create(AMP_TYPE_UINT);
+	expr_add_item(expr, adm_build_ari(AMP_TYPE_EDD, 0, g_test_ns_idx[ADM_EDD_IDX], TEST_NS_EDD_EDD_UINT));
+	adm_add_var_from_expr(id, AMP_TYPE_UINT, expr);
+}
+
+void test_ns_init_ctrl()
+{
+
+	adm_add_ctrldef(g_test_ns_idx[ADM_CTRL_IDX], TEST_NS_CTRL_ADD_VAR, 3, test_ns_ctrl_add_var);
+}
+
+void test_ns_init_mac()
+{
+
+}
+
+void test_ns_init_rpttpl()
+{
+
+	rpttpl_t *def = NULL;
+
+	/* FULL_REPORT */
+	def = rpttpl_create_id(adm_build_ari(AMP_TYPE_RPTTPL, 0, g_test_ns_idx[ADM_RPTT_IDX], TEST_NS_RPTTPL_FULL_REPORT));
+	rpttpl_add_item(def, adm_build_ari(AMP_TYPE_CNST, 0, g_test_ns_idx[ADM_META_IDX], TEST_NS_META_NAME));
+	rpttpl_add_item(def, adm_build_ari(AMP_TYPE_VAR, 0, g_test_ns_idx[ADM_VAR_IDX], TEST_NS_VAR_VAR_WITH_INIT));
+	rpttpl_add_item(def, adm_build_ari(AMP_TYPE_EDD, 0, g_test_ns_idx[ADM_EDD_IDX], TEST_NS_EDD_UINT_WITH_PARAM));
+	adm_add_rpttpl(def);
+	/* ENDPOINT_REPORT */
+	def = rpttpl_create_id(adm_build_ari(AMP_TYPE_RPTTPL, 1, g_test_ns_idx[ADM_RPTT_IDX], TEST_NS_RPTTPL_ENDPOINT_REPORT));
+	rpttpl_add_item(def, adm_build_ari(AMP_TYPE_EDD, 0, g_test_ns_idx[ADM_EDD_IDX], TEST_NS_EDD_ENDPOINT_ACTIVE));
+	adm_add_rpttpl(def);
+}
+
+void test_ns_init_tblt()
+{
+
+	tblt_t *def = NULL;
+
+	/* VARIABLES */
+
+	def = tblt_create(adm_build_ari(AMP_TYPE_TBLT, 0, g_test_ns_idx[ADM_TBLT_IDX], TEST_NS_TBLT_VARIABLES), test_ns_tblt_variables);
+	tblt_add_col(def, AMP_TYPE_ARI, "ids");
+	adm_add_tblt(def);
+
+	/* RPTTS */
+
+	def = tblt_create(adm_build_ari(AMP_TYPE_TBLT, 0, g_test_ns_idx[ADM_TBLT_IDX], TEST_NS_TBLT_RPTTS), test_ns_tblt_rptts);
+	tblt_add_col(def, AMP_TYPE_ARI, "ids");
+	adm_add_tblt(def);
+}
+

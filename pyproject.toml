@@ -1,0 +1,69 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "anms-CAmp"
+version = "2.0.0"
+authors = [
+  { name="Brian Sipos", email="brian.sipos@jhuapl.edu" },
+  { name="David Linko", email="david.linko@jhuapl.edu" },
+  { name="Minh Nguyen", email="minh.nguyen@jhuapl.edu" },
+]
+description = "C code generator for the Asychronous Management Protocol"
+readme = "README.md"
+license = { file="LICENSE" }
+requires-python = ">=3.7"
+classifiers = [
+  "Development Status :: 5 - Production/Stable",
+  "License :: OSI Approved :: Apache Software License",
+  "Programming Language :: Python :: 3",
+  "Operating System :: OS Independent",
+]
+
+dependencies = [
+  "anms-ace",
+  "cbor2",
+  "configobj",
+  "xdg",
+]
+
+[project.optional-dependencies]
+test = [
+  "jinja2",
+  "pytest",
+  "pytest-cov",
+  "coverage",
+]
+pylint = [
+  "pylint",
+  "pylint_junit",
+]
+flake8 = [
+  "flake8",
+  "flake8_pyproject",
+  "flake8_formatter_junit_xml",
+]
+docs = [
+  "sphinx <6",
+  "sphinx_rtd_theme",
+  "sphinx-argparse",
+]
+
+[tool.pylint.MAIN]
+load-plugins="pylint_junit"
+suggestion-mode="no"
+[tool.pylint.FORMAT]
+max-line-length=100
+[tool.pylint.DESIGN]
+min-public-methods=1
+
+[tool.flake8]
+max-line-length=100
+
+[project.scripts]
+camp = "camp.tools.camp:main"
+
+[project.urls]
+"Homepage" = "https://github.com/NASA-AMMOS/anms-camp"
+"Bug Tracker" = "https://github.com/NASA-AMMOS/anms-camp/issues"

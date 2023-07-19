@@ -1,0 +1,14 @@
+# Editor files
+*~
+
+# Python intermediates
+__pycache__
+*.egg-info
+requirements.txt
+build
+
+# Test outputs
+testresults.xml
+.coverage
+coverage.xml
+tests/adms/
