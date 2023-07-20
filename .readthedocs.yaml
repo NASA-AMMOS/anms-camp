@@ -15,7 +15,7 @@ build:
 python:
   install:
     - method: pip
-      path: https://github.com/NASA-AMMOS/anms-ace.git
+      path: git+https://github.com/NASA-AMMOS/anms-ace.git
     - method: pip
       path: .
       extra_requirements:
