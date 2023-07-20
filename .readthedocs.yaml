@@ -8,14 +8,14 @@ build:
   tools:
     python: "3.10"
   jobs:
+    pre_install:
+      - pip install git+https://github.com/NASA-AMMOS/anms-ace.git
     pre_build:
       - ./build_docs.sh
 
 # Use the pyproject.toml requirements
 python:
   install:
-    - method: pip
-      path: git+https://github.com/NASA-AMMOS/anms-ace.git
     - method: pip
       path: .
       extra_requirements:
