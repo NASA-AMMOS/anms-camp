@@ -55,6 +55,7 @@ class Writer(AbstractWriter, CHelperMixin):
 
         self._scraper.write_custom_includes(outfile)
         self.write_includes(outfile)
+        outfile.write(campch.make_cplusplus_open())
 
         self._scraper.write_custom_type_enums(outfile)
 
@@ -75,6 +76,7 @@ class Writer(AbstractWriter, CHelperMixin):
         self.write_operator_functions(outfile)
         self.write_table_functions(outfile)
 
+        outfile.write(campch.make_cplusplus_close())
         self.write_endifs(outfile)
 
     #
@@ -95,7 +97,7 @@ class Writer(AbstractWriter, CHelperMixin):
         name_upper = self.adm.norm_name.upper()
         endifs_str = """\
 
-#endif // ADM_{0}_IMPL_H_
+#endif /* ADM_{0}_IMPL_H_ */
 """
         outfile.write(endifs_str.format(name_upper))
 
