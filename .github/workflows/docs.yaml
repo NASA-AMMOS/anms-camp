@@ -33,6 +33,7 @@ jobs:
         run: |
           sudo apt-get update && sudo apt-get install -y python3-pip
           pip3 install --upgrade pip
+          pip3 install git+https://github.com/NASA-AMMOS/anms-ace.git
           pip3 install .[docs]
       - name: build
         run: ./build_docs.sh
