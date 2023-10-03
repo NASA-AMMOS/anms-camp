@@ -6,13 +6,11 @@ build-backend = "setuptools.build_meta"
 name = "anms-CAmp"
 version = "2.0.0"
 authors = [
-  { name="Brian Sipos", email="brian.sipos@jhuapl.edu" },
-  { name="David Linko", email="david.linko@jhuapl.edu" },
-  { name="Minh Nguyen", email="minh.nguyen@jhuapl.edu" },
+  { name="JHU/APL", email="dtnma-support@jhuapl.edu" },
 ]
 description = "C code generator for the Asychronous Management Protocol"
 readme = "README.md"
-license = { file="LICENSE" }
+license = { text="Apache-2.0" }
 requires-python = ">=3.7"
 classifiers = [
   "Development Status :: 5 - Production/Stable",
