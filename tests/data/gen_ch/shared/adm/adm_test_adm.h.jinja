@@ -24,6 +24,10 @@
 #include "shared/utils/nm_types.h"
 #include "shared/adm/adm.h"
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 
 /*
  * +---------------------------------------------------------------------------------------------+
@@ -193,5 +197,9 @@ extern vec_idx_t g_test_ns_idx[11];
 /* Initialization functions. */
 void test_ns_init();
 
+#ifdef __cplusplus
+}
+#endif
+
 #endif /* _HAVE_TEST_NS_ADM_ */
-#endif // ADM_TEST_ADM_H_
+#endif /* ADM_TEST_ADM_H_ */

@@ -691,3 +691,21 @@ def write_init_function(c_file, adm: ace.models.AdmFile, g_var_idx: str, mgr: bo
 
     c_file.write(init_decls + "\n")
     write_formatted_init_function(c_file, adm.norm_namespace, None, body)
+
+def make_cplusplus_open():
+    ''' Open an "extern C" block for C++ inclusion. '''
+    return """\
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+"""
+
+def make_cplusplus_close():
+    ''' Close  an "extern C" block for C++ inclusion. '''
+    return """\
+
+#ifdef __cplusplus
+}
+#endif
+"""

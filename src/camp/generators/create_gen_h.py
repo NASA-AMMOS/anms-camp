@@ -46,6 +46,7 @@ class Writer(AbstractWriter, CHelperMixin):
 
         self.write_defines(outfile)
         self.write_includes(outfile)
+        outfile.write(campch.make_cplusplus_open())
         self.write_adm_template_documentation(outfile)
 
         self.write_agent_nickname_definitions(outfile)
@@ -62,6 +63,7 @@ class Writer(AbstractWriter, CHelperMixin):
 
         self.write_initialization_functions(outfile)
 
+        outfile.write(campch.make_cplusplus_close())
         self.write_endifs(outfile)
 
     #
@@ -90,8 +92,9 @@ class Writer(AbstractWriter, CHelperMixin):
         name_upper = self.adm.norm_name.upper()
         ns_upper = self.adm.norm_namespace.replace("/", "_").upper()
         endifs_str = """\
+
 #endif /* _HAVE_{1}_ADM_ */
-#endif // ADM_{0}_H_
+#endif /* ADM_{0}_H_ */
 """
         outfile.write(endifs_str.format(name_upper, ns_upper))
 
@@ -491,7 +494,7 @@ class Writer(AbstractWriter, CHelperMixin):
         name = self.adm.norm_namespace
         body = 	(
             "/* Initialization functions. */\n"
-            "void {0}_init();\n\n"
+            "void {0}_init();\n"
             ).format(name)
 
         outfile.write(body.format(name))
