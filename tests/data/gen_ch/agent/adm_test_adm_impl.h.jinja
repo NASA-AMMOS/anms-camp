@@ -28,6 +28,10 @@
 #include "shared/primitives/table.h"
 #include "shared/primitives/tnv.h"
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 /*   START typeENUM */
 /*             TODO              */
 /*   STOP typeENUM  */
@@ -76,4 +80,8 @@ tnv_t *test_ns_op_plusreal64(vector_t *stack);
 tbl_t *test_ns_tblt_variables(ari_t *id);
 tbl_t *test_ns_tblt_rptts(ari_t *id);
 
-#endif // ADM_TEST_ADM_IMPL_H_
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* ADM_TEST_ADM_IMPL_H_ */
