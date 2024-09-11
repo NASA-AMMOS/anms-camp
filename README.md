@@ -46,9 +46,8 @@ generate code for various purposes. CAmp generates:
     the ADM, if indicated appropriately in the existing code (see the
     Round-tripping Section). 
 - SQL code, also for usage in NASA ION
-- ACE input files, for usage with the ARI CBOR Encoder (ACE) Tool
 
-Additional generators may be added to account for use cases outside of ION/ACE.
+Additional generators may be added to account for use cases outside of the reference DTNMA Agent.
 Please contact the developers for more information or suggestions. The
 Architecture Section also provides some explanation of the components of CAmp,
 and how to incorporate additional generators.
@@ -134,7 +133,6 @@ printed to STDOUT.
 Loading  <path_to_json_file>/<adm.json>  ... 
 [ DONE ]
 Generating files ...
-Working on  .//ace/adm_<adm>.json 	[ DONE ]
 Working on  .//agent/adm_<adm>_impl.h 	[ DONE ]
 Working on  .//agent/adm_<adm>_impl.c 	[ DONE ]
 Working on  .//adm_<adm>.sql 		[ DONE ]
@@ -148,7 +146,6 @@ This output shows that camp completed a successful generation of each of the
 files listed. If they don't already exist, camp will create the following
 directories in the current directory:
 
-- ace
 - agent
 - shared
 - mgr
@@ -218,23 +215,20 @@ copied over to the correct area of the new file.
 ### CAmp Architecture
 
 - template.json   - Example JSON ADM template
-- CAmpPython/     - contains all of the source code for camp
-  - CAmpPython.py - Main script of camp. This script calls all necessary 
+- src/camp/     - contains all of the source code for camp
+  - tools/camp.py - Main script of camp. This script calls all necessary 
                     generators and handles user input
   - data/name_registry.cfg - Initial name registry configuration file installed 
                              with camp.
-  - utils/name_registry.py - Fuctions for getting and setting values of the camp 
-                             name registry. 
   - generators/   - All generator scripts and their utility functions
-    - create_ace.py    - Generates ACE tool input file
-    - create_agent.py  - Generates agent file (C code) for usage in NASA ION
+    - create_agent_c.py  - Generates agent file (C code) for usage in NASA ION
     - create_gen_h.py  - Generates the shared header file needed for NASA ION
     - create_impl_c.py - Generates the implementation file (C code) for usage in
                          NASA ION
     - create_impl_h.py - Generates the header file for the implementation file
                          created by create_impl_c.py
     - create_mgr_c.py  - Generates the manager file for usage in NASA ION
-    - create_mysql.py  - Generates an SQL file for usage with NASA ION stored
+    - create_sql.py  - Generates an SQL file for usage with NASA ION stored
                          procedures
     - lib/        - Library functions for generating commonly-used patterns and 
                     accessing portions of the ADM.
