@@ -34,7 +34,7 @@ sys.path.insert(0, os.path.abspath('../src/'))
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
 project = 'CAmp'
-copyright = '2022, The Johns Hopkins University Applied Physics Laboratory'
+copyright = '2022-2024, The Johns Hopkins University Applied Physics Laboratory'
 author = 'JHU/APL'
 release = get_distribution('anms-camp').version
 
