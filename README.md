@@ -19,6 +19,12 @@ Institute of Technology, sponsored by the United States Government under
 the prime contract 80NM0018D0004 between the Caltech and NASA under
 subcontract 1658085.
 -->
+
+> [!IMPORTANT]
+> This library has been relocated to [JHUAPL-DTNMA/dtnma-camp](https://github.com/JHUAPL-DTNMA/dtnma-camp) under a different Github organization.
+> Future maintenance and upkeep of the library will be managed outside of the ANMS project and the AMMOS organization.
+> Please use that forked project for any new developent and for bug or enhancement reports.
+
 # CAmpPython
 This is the C code generator for the DTN Management Architecture (DTNMA).
 It is part of the larger Asynchronous Network Managment System (ANMS) managed for [NASA AMMOS](https://ammos.nasa.gov/).
@@ -51,6 +57,8 @@ Additional generators may be added to account for use cases outside of the refer
 Please contact the developers for more information or suggestions. The
 Architecture Section also provides some explanation of the components of CAmp,
 and how to incorporate additional generators.
+
+This library is based on [draft-birrane-dtn-adm-03](https://datatracker.ietf.org/doc/html/draft-birrane-dtn-adm-03) for data models and ARI processing.
 
 **NOTE**
 CAmp largely assumes that the ADM JSON input can be trusted (i.e., CAmp does not
